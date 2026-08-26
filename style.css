@@ -1,0 +1,275 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    color: #111827;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    flex: 0 0 auto;
+    background-color: #2563eb;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+footer {
+    flex: 0 0 auto;
+    background-color: #1f2937;
+    color: white;
+    padding: 6px 10px; 
+    text-align: center;
+    font-size: 0.8rem;
+}
+
+main {
+    flex: 1 1 0%;
+    min-height: 0;
+    width: 100%;
+    padding: 12px 16px; 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+        "top top"
+        "kutipan tugas"
+        "catatan cuaca";
+    gap: 12px; 
+    overflow: hidden;
+}
+
+.top-bar {
+    grid-area: top;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background-color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.top-bar h2,
+.top-bar #status {
+    margin: 0;
+}
+
+.section-kutipan { grid-area: kutipan; }
+.section-tugas { grid-area: tugas; }
+.section-catatan { grid-area: catatan; }
+.section-cuaca { grid-area: cuaca; }
+
+#status {
+    text-align: center;
+    font-weight: bold;
+}
+
+h2 {
+    color: #2563eb;
+    margin: 0;
+}
+
+section {
+    background-color: white;
+    padding: 14px 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    flex: 0 0 auto;
+}
+
+section > * {
+    min-width: 0;
+}
+
+#daftar-tugas,
+#daftar-catatan,
+#kutipan-harian,
+#cuaca-harian {
+    flex: 1 1 auto;
+    min-height: 180px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+p, li, span, small {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+input {
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    resize: none; 
+    height: 60px;
+}
+
+button {
+    padding: 6px 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 6px;
+}
+
+.tugas-item {
+    padding: 8px 10px;
+    cursor: grab;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.tugas-item:hover {
+    background-color: #eff6ff;
+}
+
+.tugas-item:active {
+    cursor: grabbing;
+}
+
+.tugas-item.sedang-drag {
+    opacity: 0.5;
+}
+
+#daftar-catatan {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 8px;
+    align-content: start;
+}
+
+.kartu-catatan {
+    width: 100%;
+    padding: 8px 10px;
+    background-color: #f9fafb;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.kartu-catatan p {
+    margin: 0 0 4px 0;
+}
+
+.kartu-catatan small {
+    display: block;
+    color: #6b7280;
+}
+
+#kutipan-harian {
+    font-style: italic;
+    line-height: 1.5;
+}
+
+#info-cuaca {
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+#cari-tugas {
+    width: 180px;
+}
+body.dark-mode {
+    background-color: #111827;
+    color: #f9fafb;
+}
+
+body.dark-mode section,
+body.dark-mode .top-bar {
+    background-color: #1f2937;
+    color: #f9fafb;
+}
+
+body.dark-mode input,
+body.dark-mode textarea {
+    background-color: #374151;
+    color: white;
+    border-color: #4b5563;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #d1d5db;
+}
+
+body.dark-mode .kartu-catatan {
+    background-color: #374151;
+    border-color: #4b5563;
+}
+
+body.dark-mode .kartu-catatan small {
+    color: #d1d5db;
+}
+
+body.dark-mode .tugas-item:hover {
+    background-color: #374151;
+}
+
+body.dark-mode h2 {
+    color: #60a5fa;
+}
+
+body.dark-mode button {
+    background-color: #3b82f6;
+}
+
+body.dark-mode button:hover {
+    background-color: #2563eb;
+}
